@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <!--The main cause of the build failing is what I am setting us as the showAsAction property-->
+    <item
+        android:title="search"
+        android:id="@+id/action_search"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="collapseActionView|always" />
+    <item
+        android:id="@+id/refresh"
+        android:orderInCategory="100"
+        android:title="refresh"
+        android:icon="@drawable/ic_refresh_black_24dp"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/favorite_movies"
+        android:orderInCategory="1"
+        app:actionLayout="@layout/notification_layout"
+        android:title="favourites"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        app:showAsAction="always" />
+
+
+</menu>
+    <!--Using app:actionLayout is preventing me from getting the null pointer error-->
