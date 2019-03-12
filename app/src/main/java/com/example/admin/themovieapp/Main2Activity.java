@@ -55,25 +55,16 @@ public class Main2Activity extends AppCompatActivity implements OnItemClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-//This gets us the passed object
+        //This gets us the passed object
         movie = (Movie) getIntent().getParcelableExtra("parcel_data");
         mdb = MovieDatabase.getInstance(getApplicationContext());
-//        End of it
+
 
          gettingFavouriteMovies();
-
-//        Details of the searched movie
 
 //        This is for the poster path
        String url = IMAGE_URL_BASE_PATH + movie.getPosterPath();
         String image = url.trim();
-
-
-
-//        This is for the trailer path
-
-//       trailerUrl = BASE_URL + id + SECOND_BASE_URL + BuildConfig.THE_API_KEY;
-//       uri = trailerUrl.trim();
 
         id = movie.getId();
         String titleText = movie.getTitle();
@@ -81,8 +72,6 @@ public class Main2Activity extends AppCompatActivity implements OnItemClickListe
        Double voteAverageDouble = movie.getVoteAverage();
        String releaseDateTetx = movie.getReleaseDate();
 
-//        Log.d("The video url",uri);
-//       Changing the toolbar text
 
         getSupportActionBar().setTitle(titleText);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -114,6 +103,7 @@ public class Main2Activity extends AppCompatActivity implements OnItemClickListe
 //        This is the code for starting the trailer in you tube and reviews
         getTrailers();
         getReviews();
+
 //        Initializing the recyclerView This is for the trailers
         //        This is important so that our recyclerView can be horizontally scrolling
         recyclerView = findViewById(R.id.recylerview2);

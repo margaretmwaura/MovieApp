@@ -96,10 +96,7 @@ public class TheFavourites extends Fragment implements OnItemClickListener,OnLon
 
         if(savedInstanceState != null) {
             Log.v("---------------->", "restored!");
-//            int scrollPosition = savedInstanceState.getInt("BUNDLE_RECYCLER_LAYOUT");
-//            String log = String.valueOf(scrollPosition);
-//            recyclerView.scrollToPosition(scrollPosition);
-//            Log.d("The gotten position " , log);
+
             Parcelable savedRecyclerLayoutState = savedInstanceState.getParcelable("BUNDLE_RECYCLER_LAYOUT");
             recyclerView.getLayoutManager().onRestoreInstanceState(savedRecyclerLayoutState);
             movies = savedInstanceState.getParcelableArrayList("INSTANCE_STATE_ENTRIES");
@@ -142,10 +139,7 @@ public class TheFavourites extends Fragment implements OnItemClickListener,OnLon
     @Override
     public void onSaveInstanceState(Bundle outState) {
         Log.v("---------------->", "saved!");
-//        int position = gridLayoutManager.findFirstVisibleItemPosition();
-//        outState.putInt("BUNDLE_RECYCLER_LAYOUT", gridLayoutManager.findFirstVisibleItemPosition());
-//        String log = String.valueOf(position);
-//        Log.d("The position is " ,log);
+
         outState.putParcelable("BUNDLE_RECYCLER_LAYOUT", recyclerView.getLayoutManager().onSaveInstanceState());
         outState.putParcelableArrayList("INSTANCE_STATE_ENTRIES", (ArrayList<? extends Parcelable>) movies);
         super.onSaveInstanceState(outState);
@@ -165,8 +159,7 @@ public class TheFavourites extends Fragment implements OnItemClickListener,OnLon
 
 
        searchView.setQuery("", false);
-//        searchView.setIconified(true);
-//        searchView.setIconified(true);
+
 
        searchView.setIconifiedByDefault(true);
 
@@ -241,10 +234,7 @@ public class TheFavourites extends Fragment implements OnItemClickListener,OnLon
         super.onPrepareOptionsMenu(menu);
         final MenuItem search_item = menu.findItem(R.id.search);
 
-//        final SearchView searchView = (SearchView) search_item.getActionView();
 
-//        searchView.setIconified(true);
-//        searchView.setIconified(true);
 
         search_item.collapseActionView();
         favouriteMovies.clear();

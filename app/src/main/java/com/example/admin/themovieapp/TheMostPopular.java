@@ -108,9 +108,6 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
         Log.d("Method has been called", "Creating the view The Most popular ");
         View rootView = inflater.inflate(R.layout.activity_the_most_popular, container, false);
          this.rootView = rootView;
-//         bundle = savedInstanceState;
-//        getActivity().getWindow().setSoftInputMode(
-//                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         mDb = MovieDatabase.getInstance(getActivity().getApplicationContext());
 
@@ -125,22 +122,13 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
 
         if (savedInstanceState != null) {
             Log.v("---------------->", "restored The most popular !");
-//            int scrollPosition = savedInstanceState.getInt("BUNDLE_RECYCLER_LAYOUT");
-//            String log = String.valueOf(scrollPosition);
-//            recyclerView.scrollToPosition(scrollPosition);
-//            Log.d("The gotten position " , log);
+
             Parcelable savedRecyclerLayoutState = savedInstanceState.getParcelable("BUNDLE_RECYCLER_LAYOUT");
             recyclerView.getLayoutManager().onRestoreInstanceState(savedRecyclerLayoutState);
             movies = savedInstanceState.getParcelableArrayList("INSTANCE_STATE_ENTRIES");
             flagAfterError = savedInstanceState.getInt("FLAG_ERROR");
             postersAdapter.setMovieList(movies);
         }
-
-
-
-
-
-
         return rootView;
     }
 
@@ -175,7 +163,7 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
                         public void run() {
                             getActivity().unregisterReceiver(networkChangeListener);
 
-                            Toast.makeText(getActivity().getApplicationContext(),"The receiver has been unregistered " , Toast.LENGTH_LONG).show();
+
                         }
                     });
                 }
@@ -222,10 +210,7 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
     @Override
     public void onSaveInstanceState(Bundle outState) {
         Log.v("---------------->", "saved The Most Popular!");
-//        int position = gridLayoutManager.findFirstVisibleItemPosition();
-//        outState.putInt("BUNDLE_RECYCLER_LAYOUT", gridLayoutManager.findFirstVisibleItemPosition());
-//        String log = String.valueOf(position);
-//        Log.d("The position is " ,log);
+
         outState.putParcelable("BUNDLE_RECYCLER_LAYOUT", recyclerView.getLayoutManager().onSaveInstanceState());
         outState.putParcelableArrayList("INSTANCE_STATE_ENTRIES", (ArrayList<? extends Parcelable>) movies);
         if(flagError != -1)
@@ -255,8 +240,6 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
 
 
         searchView.setQuery("", false);
-//        searchView.setIconified(true);
-//        searchView.setIconified(true);
 
         searchView.setIconifiedByDefault(true);
 
@@ -323,8 +306,6 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
 
         final SearchView searchView = (SearchView) search_item.getActionView();
 
-//        searchView.setIconified(true);
-//        searchView.setIconified(true);
 
         search_item.collapseActionView();
         favouriteMovies.clear();
@@ -420,12 +401,7 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
         }
 
         current = 0;
-//
-//        if(activity != null)
-//        {
-//            activity.unregisterReceiver(networkChangeListener);
-//            Log.d("UnregisteringReceiver","Broadcast receiver unregistered ");
-//        }
+
 
     }
 
@@ -468,12 +444,6 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
         SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences("FLAG_ERROR",Context.MODE_PRIVATE);
         flagAfterError = preferences.getInt("ERROR",0);
 
-//        Toast.makeText(getActivity().getApplicationContext(),"Retrieving flag value " + flagAfterError,Toast.LENGTH_LONG).show();
-//         Log.d("CheckingError","This is the value of the flag " + flagAfterError);
-//         Toast.makeText(fragmentContext,"This is the saved value " + flagAfterError,Toast.LENGTH_LONG).show();
-
-//            Write the code to check for the internet connection and until that internet connection is
-//            positive call the m
 
         if(flagAfterError == 1)
         {
@@ -490,7 +460,7 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
         SharedPreferences.Editor editor = getActivity().getApplicationContext().getSharedPreferences("FLAG_ERROR", Context.MODE_PRIVATE).edit();
         editor.putInt("ERROR",flagError);
         editor.commit();
-        Toast.makeText(getActivity().getApplicationContext(),"Saving flag value  " + flagError,Toast.LENGTH_LONG).show();
+
     }
 
     @Override
@@ -502,8 +472,7 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
 
         if(isVisibleToUser && isResumed())
         {
-//            checkIfError();
-//            Toast.makeText(getActivity().getApplicationContext(),"The visibility method has been called ",Toast.LENGTH_LONG).show();
+
             checkIfError();
         }
     }
@@ -604,7 +573,7 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
 
 
 
-                Toast.makeText(getActivity().getApplicationContext(),"The value of the flag is " + flagError , Toast.LENGTH_LONG).show();
+             ;
             }
         });
 
@@ -658,7 +627,7 @@ public class TheMostPopular extends Fragment implements OnItemClickListener,OnLo
                 }
                 if (status == false)
                 {
-//                        Toast.makeText(getActivity().getApplicationContext(), "There is not network connectivity yet \n currently setting up the animation ", Toast.LENGTH_LONG).show();
+
                     settingUpAnimation();
                 }
 

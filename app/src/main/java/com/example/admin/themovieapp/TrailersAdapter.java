@@ -58,7 +58,7 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.ViewHo
     {
         this.trailers.clear();
         this.trailers.addAll(trailersList);
-        // The adapter needs to know that the data has changed. If we don't call this, app will crash.
+
         notifyDataSetChanged();
     }
 

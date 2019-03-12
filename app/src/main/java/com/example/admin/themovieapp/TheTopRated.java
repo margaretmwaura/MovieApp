@@ -108,8 +108,7 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
         this.rootView = rootView;
 
         activity = getActivity();
-//        getActivity().getWindow().setSoftInputMode(
-//                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         mDb = MovieDatabase.getInstance(activity.getApplicationContext());
 
         networkChangeListener = new NetworkChangeListener();
@@ -124,16 +123,12 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
         }
         if(flagError == 0)
         {
-//            Toast.makeText(getActivity().getApplicationContext(),"There was no flag set ",Toast.LENGTH_LONG).show();
         }
 
 
         if (savedInstanceState != null) {
             Log.v("---------------->", "restored The Top rated !");
-//            int scrollPosition = savedInstanceState.getInt("BUNDLE_RECYCLER_LAYOUT");
-//            String log = String.valueOf(scrollPosition);
-//            recyclerView.scrollToPosition(scrollPosition);
-//            Log.d("The gotten position " , log);
+
             Parcelable savedRecyclerLayoutState = savedInstanceState.getParcelable("BUNDLE_RECYCLER_LAYOUT");
             recyclerView.getLayoutManager().onRestoreInstanceState(savedRecyclerLayoutState);
             movies = savedInstanceState.getParcelableArrayList("INSTANCE_STATE_ENTRIES");
@@ -158,20 +153,7 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
         Log.d("Fetching movies ", "Currently fetching movies ");
         if (retrofit == null)
         {
-//            OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
-//
-//            okHttpClientBuilder.addInterceptor(chain ->
-//            {
-//                boolean connected = networkMonitor.isConnected();
-//                if (connected)
-//                {
-//                    return chain.proceed(chain.request());
-//                }
-//                else
-//                {
-//                    settingUpAnimation();
-//                }
-//            });
+
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
@@ -197,7 +179,7 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
                         public void run() {
                             getActivity().unregisterReceiver(networkChangeListener);
 
-                            Toast.makeText(getActivity().getApplicationContext(),"The receiver has been unregistered " , Toast.LENGTH_LONG).show();
+
                         }
                     });
                 }
@@ -250,10 +232,7 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
     @Override
     public void onSaveInstanceState(Bundle outState) {
         Log.v("---------------->", "saved The Top Rated!");
-//        int position = gridLayoutManager.findFirstVisibleItemPosition();
-//        outState.putInt("BUNDLE_RECYCLER_LAYOUT", gridLayoutManager.findFirstVisibleItemPosition());
-//        String log = String.valueOf(position);
-//        Log.d("The position is " ,log);
+
         outState.putParcelable("BUNDLE_RECYCLER_LAYOUT", recyclerView.getLayoutManager().onSaveInstanceState());
         outState.putParcelableArrayList("INSTANCE_STATE_ENTRIES", (ArrayList<? extends Parcelable>) movies);
         super.onSaveInstanceState(outState);
@@ -270,9 +249,6 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
         Log.d("onCreateOptionsMenu", "Method called The Top Rated");
 
 
-//       This piece of code is for finding the textView within the favourites icon layout
-//        final View actionView = menu.findItem(R.id.favorite_movies).getActionView();
-//        notification = (TextView) actionView.findViewById(R.id.notification_message);
         final List<Movie> movieSearch = new ArrayList<>();
         MenuItem search_item = menu.findItem(R.id.action_search);
 
@@ -282,8 +258,7 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
 
 
         searchView.setQuery("", false);
-//        searchView.setIconified(true);
-//        searchView.setIconified(true);
+
 
         searchView.setIconifiedByDefault(true);
 
@@ -349,10 +324,7 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
         super.onPrepareOptionsMenu(menu);
         final MenuItem search_item = menu.findItem(R.id.action_search);
 
-//        final SearchView searchView = (SearchView) search_item.getActionView();
 
-//        searchView.setIconified(true);
-//        searchView.setIconified(true);
 
         search_item.collapseActionView();
         favouriteMovies.clear();
@@ -447,12 +419,6 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
 
         current = 0;
 
-//        if(activity != null) {
-//            activity.unregisterReceiver(networkChangeListener);
-//
-//            Log.d("UnregisteringReceiver ", "The receiver has been unregistered ");
-//        }
-
    }
 
     public void settingUpTheUI() {
@@ -490,25 +456,18 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
         activity = getActivity();
         if (isVisibleToUser && isResumed())
         {
-//            checkIfError();
+
             checkIfError();
-//            Toast.makeText(getActivity().getApplicationContext(), "The visibility method has been called ", Toast.LENGTH_LONG).show();
         }
     }
 
     public void checkIfError() {
-//            int scrollPosition = savedInstanceState.getInt("BUNDLE_RECYCLER_LAYOUT");
-//            String log = String.valueOf(scrollPosition);
-//            recyclerView.scrollToPosition(scrollPosition);
-//            Log.d("The gott
+
 
         current = 1;
         SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences("FLAG_ERROR", Context.MODE_PRIVATE);
         flagAfterError = preferences.getInt("ERROR", 0);
 
-//        Toast.makeText(getActivity().getApplicationContext(), "Retrieving flag value " + flagAfterError, Toast.LENGTH_LONG).show();
-//         Log.d("CheckingError","This is the value of the flag " + flagAfterError);
-//         Toast.makeText(fragmentContext,"This is the saved value " + flagAfterError,Toast.LENGTH_LONG).show();
 
         if (flagAfterError == 1)
         {
@@ -527,7 +486,7 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
         SharedPreferences.Editor editor = getActivity().getApplicationContext().getSharedPreferences("FLAG_ERROR", Context.MODE_PRIVATE).edit();
         editor.putInt("ERROR", flagError);
         editor.commit();
-//        Toast.makeText(getActivity().getApplicationContext(), "Saving flag value  " + flagError, Toast.LENGTH_LONG).show();
+
     }
 
     public void settingUpAnimation() {
@@ -692,24 +651,7 @@ public class TheTopRated extends Fragment implements OnItemClickListener,OnLongC
         return noConnectionActive;
     }
 
-//
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView();
-//
-//        activity.unregisterReceiver(networkChangeListener);
-//
-//        Log.d("OnDestroyMethod ","The broadcast receiver has been unregistered ");
-//    }
 
-
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//
-//        getActivity().unregisterReceiver(networkChangeListener);
-//        Log.d("UnregisteringReceiver","Unregistering the receiver ");
-//    }
 }
 
 

@@ -63,24 +63,6 @@ public class PostersAdapter  extends RecyclerView.Adapter<PostersAdapter.PosterV
         String image_url = IMAGE_URL_BASE_PATH + movie.getPosterPath();
         String toLoad = image_url.trim();
         Log.d("The url",image_url);
-        // This is how we use Picasso to load images from the internet.
-//        Picasso.with(mContext)
-//                .load(image_url)
-//                .into(holder.posterImageView, new com.squareup.picasso.Callback()
-//                {
-//                    @Override
-//                    public void onSuccess()
-//                    {
-//                        Toast.makeText(mContext, " Huge success dear one", Toast.LENGTH_LONG).show();
-//                    }
-//
-//                    @Override
-//                    public void onError()
-//                    {
-//                        Toast.makeText(mContext,"Fail",Toast.LENGTH_LONG).show();
-//                    }
-//                });
-
 
         Picasso.Builder builder = new Picasso.Builder(mContext);
         builder.listener(new Picasso.Listener()
@@ -141,14 +123,6 @@ public class PostersAdapter  extends RecyclerView.Adapter<PostersAdapter.PosterV
         public boolean onLongClick(View v)
         {
 
-//            int previousSelect = selectedPosition;
-//            selectedPosition=getAdapterPosition();
-//
-////          This notify methods are enabling the bindViewHolderMethods to be called once the values change
-//            notifyItemChanged(previousSelect);
-//            notifyItemChanged(selectedPosition);
-//            Checking whether the adapter position exists in the sparsebooleanArray
-
             longCLickListener.onLongClick(v,getAdapterPosition());
             if(!recyclerArrayState.get(getAdapterPosition(),false))
             {
@@ -169,8 +143,6 @@ public class PostersAdapter  extends RecyclerView.Adapter<PostersAdapter.PosterV
 
             }
 
-//This method is causing a reload hence something ugly
-//            notifyDataSetChanged();
 
 //            Set to true to prevent the onClickLIstener from being fired
             return true;
