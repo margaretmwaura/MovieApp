@@ -4,7 +4,7 @@ The movies are fetched from the The Movie Database(TMDb).
 The users can view the trailers as well as the reviews of a particular movie.
 The user add a movie to the favourite list and the movies will be available offline.
 
-##What I will learn
+## What I will learn
 1) Using retrofit to fetch movies from the movie database
 2) Using room to store the favourite list of movies
 3) Implementing viewModel and livedata architecture
