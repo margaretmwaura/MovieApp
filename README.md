@@ -4,6 +4,8 @@ The movies are fetched from the The Movie Database(TMDb).
 The users can view the trailers as well as the reviews of a particular movie.
 The user can add a movie to the favourite list and the favourite movies will be available offline.
 
+![Screenshot_20190312-113221](https://user-images.githubusercontent.com/34396651/54186576-ede4e780-4468-11e9-917a-733869e66f84.png)
+
 ## What I will learn
 1) Using retrofit to fetch movies from the movie database
 2) Using room to store the favourite list of movies
